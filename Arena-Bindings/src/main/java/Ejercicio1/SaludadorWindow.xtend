@@ -16,14 +16,27 @@ class SaludadorWindow extends MainWindow<Saludador>{
 	
 	override createContents(Panel mainPanel) {
 		this.title = "Saludador (XTend)"
+		this.minHeight = 210
+		this.minWidth = 267
 		//verticalLayout por defecto
 		
-		new Label(mainPanel).text = "Nombre"
-		new TextBox(mainPanel).value <=> "nombre"
+		var labelNombre = new Label(mainPanel).text = "Nombre"
+		labelNombre.alignLeft
+		
+		new TextBox(mainPanel) => [
+			width = 185
+			value <=> "nombre"
+		]
 		
 		
-		new Label(mainPanel).text = "Apellido"
-		new TextBox(mainPanel).value <=> "apellido"
+		var labelApellido = new Label(mainPanel).text = "Apellido"
+		labelApellido.alignLeft
+		
+		new TextBox(mainPanel) => [
+			width = 185
+			value <=> "apellido"
+		]
+		
 		
 		new Label(mainPanel) => [
 			background = Color.ORANGE

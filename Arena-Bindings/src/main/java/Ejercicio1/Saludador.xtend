@@ -14,6 +14,12 @@ class Saludador {
 	String saludo = "Ingrese nombre y apellido"
 	
 	def String saludar(){
+		
+		switch this {
+			case nombre === null : nombre = ""
+			case apellido === null : apellido = ""
+		}
+		
 		"Hola " + nombre + " " + apellido
 	}
 	
