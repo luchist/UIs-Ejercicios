@@ -17,6 +17,8 @@ class Saludador {
 		"Hola " + nombre + " " + apellido
 	}
 	
+	
+	//se actualiza el saludo cada vez que se modifica el nombre o apellido
 	def void setNombre(String nombre) {
 		this.nombre = nombre
 		this.saludo = saludar()

@@ -16,23 +16,21 @@ class SaludadorWindow extends MainWindow<Saludador>{
 	
 	override createContents(Panel mainPanel) {
 		this.title = "Saludador (XTend)"
+		//verticalLayout por defecto
 		
 		new Label(mainPanel).text = "Nombre"
-		new TextBox(mainPanel) => [
-			value <=> "nombre"
-		]
+		new TextBox(mainPanel).value <=> "nombre"
 		
 		
 		new Label(mainPanel).text = "Apellido"
-		new TextBox(mainPanel) => [
-			value <=> "apellido"
-		]
+		new TextBox(mainPanel).value <=> "apellido"
 		
 		new Label(mainPanel) => [
 			background = Color.ORANGE
 			value <=> "saludo"
 		]
 	}
+	
 	
 	def static main(String[] args) {
 		new SaludadorWindow().startApplication
