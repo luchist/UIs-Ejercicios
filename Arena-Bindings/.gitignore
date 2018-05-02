@@ -187,3 +187,6 @@ xtend-gen/
 
 
 # End of https://www.gitignore.io/api/java,xtext,maven,linux,eclipse,windows,sublimetext,visualstudiocode
+
+#XTend Generated sources
+*generated-sources*
