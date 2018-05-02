@@ -1,30 +1,28 @@
 package ejercicio2
 
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Panel
+import java.awt.Color
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.NumericField
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import java.awt.Color
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class CalculadoraWindow extends MainWindow<Calculadora>{
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
+class CalculadoraWindow extends SimpleWindow<Calculadora>{
 	
-	new() {
-		super(new Calculadora)
+	new(WindowOwner owner, Calculadora model) {
+		super(owner, model)
+		title = "Calculadora"
+		taskDescription = "Listo para calcular!!!"
 	}
 	
-	def static main(String[] args) {
-		new CalculadoraWindow().startApplication
-	}
-	
-	override createContents(Panel mainPanel) {
+	override createFormPanel(Panel mainPanel) {
 		this.title = "Calculadora (XTend)"
 		this.minHeight = 210
 		this.minWidth = 267
-		new ErrorsPanel(mainPanel, "Listo para calcular")
 		//verticalLayout por defecto
 		
 		var labelOp1 = new Label(mainPanel).text = "Operando 1"
@@ -44,16 +42,14 @@ class CalculadoraWindow extends MainWindow<Calculadora>{
 			width = 185
 		]
 		
-		AgregarBotones(mainPanel)
-		
 		new Label(mainPanel) => [
 			background = Color.ORANGE
 			value <=> "resultado"
 		]
 	}
 	
-	def void AgregarBotones(Panel panel){
-		new Panel(panel) => [
+	override protected addActions(Panel actionsPanel){
+		new Panel(actionsPanel) => [
 			layout = new HorizontalLayout
 			
 			new Button(it) => [
@@ -82,6 +78,11 @@ class CalculadoraWindow extends MainWindow<Calculadora>{
 		]
 	}
 	
+	
+	/***************
+	 * OPERACIONES *
+	 ***************/
+	 
 	
 	def sumar() {
 		this.modelObject.sumar

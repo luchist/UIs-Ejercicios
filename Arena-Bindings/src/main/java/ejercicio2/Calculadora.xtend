@@ -2,6 +2,7 @@ package ejercicio2
 
 import org.uqbar.commons.model.annotations.Observable
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.exceptions.UserException
 
 @Observable
 @Accessors
@@ -25,11 +26,9 @@ class Calculadora{
 		resultado = operando1 - operando2
 	}
 	
-	
-	def dividir() {
-		if(operando2 == 0){
-			throw new IllegalArgumentException("No se puede dividir por 0");
-		}
+		
+	def void dividir() {
+		if(operando2 == 0){ throw new UserException("No se puede dividir por 0"); }
 		else{
 			resultado = operando1 / operando2	
 		}
